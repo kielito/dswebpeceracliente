@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 export class UsuariosService{
 	//API_URI = 'http://localhost:3000/user'; //variable local a la clase con la ruta
-	API_URI = 'https://dstpwebpeceraserver.herokuapp.com/user';
+	API_URI = 'https://dswebpeceraserver.herokuapp.com/user';
 	
 	constructor(private http: HttpClient, private router:Router) { }
 
