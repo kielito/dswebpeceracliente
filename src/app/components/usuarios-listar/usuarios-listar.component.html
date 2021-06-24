@@ -1,0 +1,72 @@
+<div class="component" *ngIf="revelar">
+    <div class="col-md-4" *ngFor =" let usuario of usuarios"> <!-- declaro la variable usuario y luego la completo iterando usuarios-->
+        <!-- atributo *ngFor: directiva de Angular, recibimos un array y queremos listarlo, para eso se declara un obj usuario y luego itera usuarios (equivalente a #each)-->
+        <!--{{usuario.nombre}}-->
+        <p *ngIf="usuario.Perfil=='Admin'; else user">{{usuario.Nombre}} <b>es el admin ;)</b></p>
+        <ng-template #user>{{usuario.Nombre}} <b>es un usuario :D</b></ng-template>
+        <!--- *ngIf: imprime la etiqueta si se cumple la condicion-->
+    </div>
+</div>
+
+<div class="component" *ngIf="revelar">
+    <div class="col-md-4" *ngFor =" let usuario of usuarios">
+        <!--{{usuario.nombre}}-->
+        {{usuario.Nombre}}
+        <p *ngIf="usuario.rol=='Admin'; else user">{{usuario.Nombre}} <b>es el admin ;)</b></p>
+        <ng-template #user>{{usuario.Nombre}} <b>es el user :D</b></ng-template>
+    </div>
+</div>
+<br>
+<table class="table table-light table-striped table-hover">
+    <thead class="thead-dark">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>password</th>
+        <th>Accion</th>
+    </thead>
+    <tbody *ngIf="usuarios.length > 0; else fila">
+        <tr *ngFor=" let usuario of usuarios">
+            <td>{{usuario.Id}}</td>
+            <td>{{usuario.Nombre}}</td>
+            <td>{{usuario.Password}}</td>
+            <td><a class="btn btn-danger btn-block" href="/user/delete/{{usuario.Id}}">Eliminar</a></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+<br>
+<form action="../user/procesar" method="post">
+    <table class="table table-dark table-striped table-hover">
+        <thead class="thead-light">
+            <th>Accion</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>password</th>
+        </thead>
+        <tbody *ngIf="usuarios.length > 0; else fila">
+            <tr *ngFor=" let usuario of usuarios">
+                <td>
+                    <input type="checkbox" name="usuario" value="{{usuario.Id}}">
+                </td>
+                <td>{{usuario.Id}}</td>
+                <td>{{usuario.Nombre}}</td>
+                <td>{{usuario.Password}}</td>
+            </tr>
+        </tbody>
+        <ng-template #fila>
+            <tbody>
+                <tr>
+                    <td colspan="4">No hay mas filas</td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <button class="btn btn-dark btn-sm">Enviar</button>
+    <button class="btn btn-dark btn-lg" disabled>Enviar</button>
+</form>

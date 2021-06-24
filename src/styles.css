@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+	height:100%;
+}
+
+body {
+	background-color: #01ccf8;
+	font-family: Verdana;
+	height:100%;
+	background-image: url("assets/img/skyline.jpg");
+	/*background-repeat: repeat-y;*/
+	background-size: cover;
+	/*background-position: 40px 100px;*/
+	/*position left top right bottom*/
+}
+

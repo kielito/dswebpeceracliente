@@ -1,0 +1,13 @@
+td {
+	border-width: 2px;
+	border-style: dotted;
+    border-color: black;
+    /*padding-top: 10%; para agregar espacio arriba de cada celda*/
+}
+
+table {
+    width: 50%;
+    margin-left: 20%;
+    text-align: center;
+    opacity: 0.9;
+}
